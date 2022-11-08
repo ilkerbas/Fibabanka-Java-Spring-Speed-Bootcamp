@@ -1,5 +1,8 @@
 package com.ilkerbas.spring.inventory.business.service;
 
+import java.util.List;
+
+import com.ilkerbas.spring.inventory.business.dto.ListProductDto;
 
 /* 
  * Product Service interface
@@ -10,4 +13,9 @@ package com.ilkerbas.spring.inventory.business.service;
 
 public interface IProductService {
 
+	// read product by id
+	ListProductDto find(long productId);
+	
+	// read products by categoryId
+	List<ListProductDto> findAllByCategoryId(long categoryId);
 }

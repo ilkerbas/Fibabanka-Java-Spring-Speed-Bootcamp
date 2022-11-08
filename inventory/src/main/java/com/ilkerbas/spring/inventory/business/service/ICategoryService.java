@@ -1,5 +1,8 @@
 package com.ilkerbas.spring.inventory.business.service;
 
+import java.util.List;
+
+import com.ilkerbas.spring.inventory.business.dto.ListCategoryDto;
 
 /* 
  * Category Service interface
@@ -10,4 +13,6 @@ package com.ilkerbas.spring.inventory.business.service;
 
 public interface ICategoryService {
 
+	// get all categories
+	List<ListCategoryDto> findAll();
 }
