@@ -3,7 +3,6 @@ package com.ilkerbas.spring.inventory.business.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ilkerbas.spring.inventory.business.dto.ListCategoryDto;
@@ -14,9 +13,12 @@ import com.ilkerbas.spring.inventory.data.repository.CategoryRepository;
 @Service
 public class CategoryService implements ICategoryService {
 
-	// CategoryRepository interface - @Autowired
-	@Autowired
+	// CategoryRepository interface - Constructor injection
 	CategoryRepository categoryRepository;
+	
+	public CategoryService(CategoryRepository categoryRepository) {
+		this.categoryRepository = categoryRepository;
+	}
 	
 	// get all categories
 	@Override

@@ -14,8 +14,12 @@ import com.ilkerbas.spring.inventory.data.repository.ProductRepository;
 @Service
 public class ProductService implements IProductService {
 
-	// ProductRepository interface - @Autowired
+	// ProductRepository interface - Constructor injection
 	ProductRepository productRepository;
+	
+	public ProductService(ProductRepository productRepository) {
+		this.productRepository = productRepository;
+	}
 	
 	// get product by productId
 	@Override
