@@ -71,5 +71,15 @@ public class Cart {
 	public void setCartStatus(boolean cartStatus) {
 		this.cartStatus = cartStatus;
 	}
+
+	public List<CartProduct> getCartProducts() {
+		return cartProducts;
+	}
+
+	public void setCartProducts(List<CartProduct> cartProducts) {
+		this.cartProducts = cartProducts;
+	}
+	
+	
 	
 }
