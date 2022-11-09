@@ -1,5 +1,8 @@
 package com.ilkerbas.spring.shopping.business.service;
 
-public class CartProductService implements ICartProductService {
+// CartProduct Service interface
+public interface CartProductService {
 
+	// delete cart product
+	void deleteCartProduct(long cartId, long productId);
 }

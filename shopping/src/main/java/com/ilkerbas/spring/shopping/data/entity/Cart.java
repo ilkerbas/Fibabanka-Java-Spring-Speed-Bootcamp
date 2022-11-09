@@ -2,6 +2,7 @@ package com.ilkerbas.spring.shopping.data.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +25,7 @@ public class Cart {
 	
 	private boolean cartStatus;
 	
-	@OneToMany(mappedBy = "cart")
+	@OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
 	private List<CartProduct> cartProducts;
 
 	// NoArgs constructor

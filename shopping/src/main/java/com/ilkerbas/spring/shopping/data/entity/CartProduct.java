@@ -1,5 +1,6 @@
 package com.ilkerbas.spring.shopping.data.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,8 @@ public class CartProduct {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long cartProductId;
 	
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.DETACH,
+			CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name = "cart_id")
 	private Cart cart;
 	
