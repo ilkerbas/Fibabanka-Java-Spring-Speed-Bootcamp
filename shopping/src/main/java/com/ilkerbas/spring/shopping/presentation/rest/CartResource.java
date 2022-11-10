@@ -25,11 +25,11 @@ public class CartResource {
 	@PostMapping("/shopping/cart/create")
 	public long create(@RequestBody CartDto cartDto) {
 		
-		cartService.create(cartDto);
+		long cartId = cartService.create(cartDto);
 		
-		System.out.println("Cart id: " + cartDto.getCartId() + 
+		System.out.println("Cart id: " + cartId + 
 				"Customer name: " + cartDto.getCustomerName());
-		return cartDto.getCartId();
+		return cartId;
 	}
 	
 	@PostMapping("/shopping/cart/add")

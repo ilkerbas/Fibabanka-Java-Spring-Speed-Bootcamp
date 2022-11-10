@@ -85,15 +85,10 @@ public class CommerceController {
 	@GetMapping("/shopping/cart/create")
 	@ResponseBody
 	public long postCart() {
-
-		/*CartDto postedCartDto = new CartDto(
-				0, "IlkerBas",
-				3245, false,
-				new ArrayList<CartProductDto>());*/
 		
 		CartDto postedCartDto = new CartDto();
 		postedCartDto.setCartStatus(false);
-		postedCartDto.setCustomerName("Ilker");
+		postedCartDto.setCustomerName("fibabanka");
 		postedCartDto.setTotalAmount(2222);
 		postedCartDto.setCartProductDtos(new ArrayList<CartProductDto>());
 				
@@ -102,11 +97,10 @@ public class CommerceController {
 
 		String url = "http://localhost:8080/commerce/shopping/cart/create";
 
-		CartDto cartDto = restTemplate.postForObject(url, postedCartDto, CartDto.class);
+		Long cartId = restTemplate.postForObject(url, postedCartDto, Long.class);	
+		
+		return cartId;
 
-		//restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<CartDto>(postedCartDto), Void.class);
-
-		return 3;
 	}
 
 	// add product to cart
@@ -115,11 +109,11 @@ public class CommerceController {
 	public CartProductDto addProduct() {
 
 		CartProductDto cartProductDto = new CartProductDto();
-		cartProductDto.setLineAmount(41);
+		cartProductDto.setLineAmount(88);
 		cartProductDto.setProductId(5);
-		cartProductDto.setSalesPrice(32);
+		cartProductDto.setSalesPrice(2345);
 		cartProductDto.setSalesQuantity(3);
-		cartProductDto.setCartId(2);
+		cartProductDto.setCartId(18);
 		
 		RestTemplate restTemplate = new RestTemplate();
 

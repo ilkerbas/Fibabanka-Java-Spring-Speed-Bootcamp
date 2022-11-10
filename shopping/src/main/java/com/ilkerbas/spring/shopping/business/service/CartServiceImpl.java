@@ -33,9 +33,11 @@ public class CartServiceImpl implements CartService {
 		cart.setTotalAmount(cartDto.getTotalAmount());
 		cart.setCartProducts(new ArrayList<CartProduct>());
 		
-		cartRepository.save(cart);
+		Cart savedCart = cartRepository.save(cart);
 		
-		return cart.getCartId();
+		System.out.println(savedCart.getCartId());
+		
+		return savedCart.getCartId();
 	}
 
 	// add cartProduct to cart by given cartProductDto
@@ -49,6 +51,7 @@ public class CartServiceImpl implements CartService {
 		cartProduct.setLineAmount(cartProductDto.getLineAmount());
 		cartProduct.setSalesQuantity(cartProductDto.getSalesQuantity());
 		cartProduct.setSalesPrice(cartProductDto.getSalesPrice());
+		cartProduct.setProductId(cartProductDto.getProductId());
 		
 		Optional<Cart> cartOptional = cartRepository.findById(cartId);
 		
@@ -59,6 +62,13 @@ public class CartServiceImpl implements CartService {
 			List<CartProduct> cartProducts = cart.getCartProducts();
 			cart.setCartProducts(cartProducts);
 			cartRepository.save(cart);
+			
+			Optional<Cart> cartOpt = cartRepository.findById(cartId);
+			if(cartOpt.isPresent()) {
+				int sizeOfCartProducts =  cartOptional.get().getCartProducts().size();
+				long cartProductId = cartOptional.get().getCartProducts().get(sizeOfCartProducts - 1).getCartProductId();
+				cartProductDto.setCartProductId(cartProductId);
+			}
 			
 			return cartProductDto;
 		}

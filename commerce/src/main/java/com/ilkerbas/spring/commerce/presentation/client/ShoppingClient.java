@@ -31,9 +31,10 @@ public class ShoppingClient {
 		
 		String url = "http://localhost:8082/shopping/cart/create";
 		
-		restTemplate.postForObject(url, cartDto, Void.class);
+		long cartId = restTemplate.postForObject(url, cartDto, Long.class);
+		System.out.println(cartId + " shoppingClient");
 		//restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<CartDto>(cartDto), Void.class);
-		return 3;
+		return cartId;
 	}
 
 	// add product to cart

@@ -75,10 +75,10 @@ public class CommerceResource {
 
 		//CartDto cartDto = new CartDto(0, "can", 213, false, new ArrayList<CartProductDto>());
 		
-		commerceService.create(cartDto);
+		long cartId = commerceService.create(cartDto);
 
-		System.out.println("Cart id: " + cartDto.getCartId() + "Customer name: " + cartDto.getCustomerName());
-		return cartDto.getCartId();
+		System.out.println("Cart id: " + cartId + "Customer name: " + cartDto.getCustomerName());
+		return cartId;
 	}
 
 	// add cart product to cart
