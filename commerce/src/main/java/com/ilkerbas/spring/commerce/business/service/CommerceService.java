@@ -7,6 +7,8 @@ import com.ilkerbas.spring.commerce.business.dto.CartProductDto;
 import com.ilkerbas.spring.commerce.business.dto.CategoryDto;
 import com.ilkerbas.spring.commerce.business.dto.ProductDto;
 
+
+// Commerce Service interface
 public interface CommerceService {
 
 	// get all categories

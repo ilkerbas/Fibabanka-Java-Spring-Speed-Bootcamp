@@ -3,6 +3,7 @@ package com.ilkerbas.spring.commerce.business.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ilkerbas.spring.commerce.business.dto.CartDto;
 import com.ilkerbas.spring.commerce.business.dto.CartProductDto;
@@ -11,6 +12,9 @@ import com.ilkerbas.spring.commerce.business.dto.ProductDto;
 import com.ilkerbas.spring.commerce.presentation.client.InventoryClient;
 import com.ilkerbas.spring.commerce.presentation.client.ShoppingClient;
 
+// Commerce Service implementation
+// Communicates with inventory and shopping client
+@Service
 public class CommerceServiceImpl implements CommerceService {
 
 	@Autowired
