@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ilkerbas.spring.inventory.business.dto.ListProductDto;
-import com.ilkerbas.spring.inventory.business.service.IProductService;
+import com.ilkerbas.spring.inventory.business.dto.ProductDto;
+import com.ilkerbas.spring.inventory.business.service.ProductService;
 
 /*
  * Rest Service/Resource for Product
@@ -22,26 +22,26 @@ import com.ilkerbas.spring.inventory.business.service.IProductService;
 public class ProductResource {
 
 	// ProductService interface, Constructor injection
-	private IProductService productService;
+	private ProductService productService;
 	
-	public ProductResource(IProductService productService) {
+	public ProductResource(ProductService productService) {
 		this.productService = productService;
 	}
 	
 	// get products by given category id
 	@GetMapping("/products/{categoryId}")
-	public List<ListProductDto> getProductsByCategoryId(@PathVariable("categoryId") long categoryId){
+	public List<ProductDto> getProductsByCategoryId(@PathVariable("categoryId") long categoryId){
 		
-		List<ListProductDto> listProductDtos = productService.findAllByCategoryId(categoryId);
+		List<ProductDto> listProductDtos = productService.findAllByCategoryId(categoryId);
 		
 		return listProductDtos;
 	}
 	
 	// get product by given id
 	@GetMapping("/product/{id}")
-	public ListProductDto getProductById(@PathVariable("id") long productId) {
+	public ProductDto getProductById(@PathVariable("id") long productId) {
 		
-		ListProductDto listProductDto = productService.find(productId);
+		ProductDto listProductDto = productService.find(productId);
 		
 		return listProductDto;
 	}

@@ -3,7 +3,7 @@ package com.ilkerbas.spring.inventory.business.dto;
 
 // Product data transfer object
 
-public class ListProductDto {
+public class ProductDto {
 
 	// fields
 	private long productId;
@@ -15,11 +15,11 @@ public class ListProductDto {
 	private long categoryId;
 
 	// NoArgsConstructor
-	public ListProductDto() {
+	public ProductDto() {
 	}
 
 	// AllArgsConstructor
-	public ListProductDto(long productId, String productName, double salesPrice, long categoryId) {
+	public ProductDto(long productId, String productName, double salesPrice, long categoryId) {
 		this.productId = productId;
 		this.productName = productName;
 		this.salesPrice = salesPrice;

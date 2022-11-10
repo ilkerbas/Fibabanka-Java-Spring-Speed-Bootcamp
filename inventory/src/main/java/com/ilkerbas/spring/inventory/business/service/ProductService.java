@@ -1,61 +1,21 @@
 package com.ilkerbas.spring.inventory.business.service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.stereotype.Service;
+import com.ilkerbas.spring.inventory.business.dto.ProductDto;
 
-import com.ilkerbas.spring.inventory.business.dto.ListProductDto;
-import com.ilkerbas.spring.inventory.data.entity.Product;
-import com.ilkerbas.spring.inventory.data.repository.ProductRepository;
+/* 
+ * Product Service interface
+ * Applies IoC
+ * Classes that implements
+ * have to follow this interface
+*/
 
-// Product Service implementation 
-@Service
-public class ProductService implements IProductService {
+public interface ProductService {
 
-	// ProductRepository interface - Constructor injection
-	ProductRepository productRepository;
+	// read product by id
+	ProductDto find(long productId);
 	
-	public ProductService(ProductRepository productRepository) {
-		this.productRepository = productRepository;
-	}
-	
-	// get product by productId
-	@Override
-	public ListProductDto find(long productId) {
-
-		Optional<Product> optional = productRepository.findById(productId);
-		
-		if(optional.isPresent()) {
-			
-			Product product = optional.get();
-			ListProductDto listProductDto = new ListProductDto(
-					product.getProductId(), product.getProductName(), 
-					product.getSalesPrice(), product.getCategory().getCategoryId());
-			
-			return listProductDto;
-			
-		}
-		return null;
-	}
-
-	// get all products by given categoryId
-	@Override
-	public List<ListProductDto> findAllByCategoryId(long categoryId) {
-
-		Iterable<Product> products = 
-				productRepository.findAllByCategoryId(categoryId);
-		
-		List<ListProductDto> productDtos = new ArrayList<>();
-		
-		for(Product product : products) {
-			productDtos.add(
-					new ListProductDto(product.getProductId(), product.getProductName(),
-							product.getSalesPrice(), product.getCategory().getCategoryId())
-					);
-		}
-		return productDtos;
-	}
-
+	// read products by categoryId
+	List<ProductDto> findAllByCategoryId(long categoryId);
 }

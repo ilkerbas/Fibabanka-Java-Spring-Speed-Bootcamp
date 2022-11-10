@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ilkerbas.spring.inventory.business.dto.ListCategoryDto;
-import com.ilkerbas.spring.inventory.business.service.ICategoryService;
+import com.ilkerbas.spring.inventory.business.dto.CategoryDto;
+import com.ilkerbas.spring.inventory.business.service.CategoryService;
 
 /*
  * Rest Service/Resource for Category
@@ -21,17 +21,17 @@ import com.ilkerbas.spring.inventory.business.service.ICategoryService;
 public class CategoryResource {
 
 	// CategoryService interface, Constructor injection
-	private ICategoryService categoryService;
+	private CategoryService categoryService;
 	
-	public CategoryResource(ICategoryService categoryService) {
+	public CategoryResource(CategoryService categoryService) {
 		this.categoryService = categoryService;
 	}
 	
 	// get all categories
 	@GetMapping("/categories")
-	public List<ListCategoryDto> getAllCategories() {
+	public List<CategoryDto> getAllCategories() {
 		
-		List<ListCategoryDto> listCategoryDtos = categoryService.findAll();
+		List<CategoryDto> listCategoryDtos = categoryService.findAll();
 		
 		return listCategoryDtos;
 	}

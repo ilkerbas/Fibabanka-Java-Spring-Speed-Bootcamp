@@ -4,7 +4,7 @@ package com.ilkerbas.spring.inventory.business.dto;
 // Category data transfer object
 // List categories
 
-public class ListCategoryDto {
+public class CategoryDto {
 	
 	// fields
 	private long categoryId;
@@ -12,12 +12,12 @@ public class ListCategoryDto {
 	private String categoryName;
 	
 	// no-argument constructor
-	public ListCategoryDto() {
+	public CategoryDto() {
 		
 	}
 
 	// AllArgsConstructor
-	public ListCategoryDto(long categoryId, String categoryName) {
+	public CategoryDto(long categoryId, String categoryName) {
 		this.categoryId = categoryId;
 		this.categoryName = categoryName;
 	}
