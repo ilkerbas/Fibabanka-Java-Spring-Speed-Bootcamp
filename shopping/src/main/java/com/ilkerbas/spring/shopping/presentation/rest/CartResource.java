@@ -1,6 +1,7 @@
 package com.ilkerbas.spring.shopping.presentation.rest;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,11 +17,12 @@ public class CartResource {
 
 	private CartService cartService;
 	
+	@Autowired
 	public CartResource(CartService cartService) {
 		this.cartService = cartService;
 	}
 	
-	@GetMapping("/shopping/cart/create")
+	@PostMapping("/shopping/cart/create")
 	public long create(@RequestBody CartDto cartDto) {
 		
 		cartService.create(cartDto);
@@ -31,7 +33,7 @@ public class CartResource {
 	}
 	
 	@PostMapping("/shopping/cart/add")
-	public CartProductDto add(CartProductDto cartProductDto) {
+	public CartProductDto add(@RequestBody CartProductDto cartProductDto) {
 		
 		
 		CartProductDto productDto = cartService.addProduct(cartProductDto);
