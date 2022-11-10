@@ -116,7 +116,7 @@ public class CommerceController {
 
 		CartProductDto cartProductDto = new CartProductDto();
 		cartProductDto.setLineAmount(41);
-		cartProductDto.setProductId(31);
+		cartProductDto.setProductId(5);
 		cartProductDto.setSalesPrice(32);
 		cartProductDto.setSalesQuantity(3);
 		cartProductDto.setCartId(2);

@@ -15,6 +15,8 @@ public class CartProductDto {
 		
 		private long cartId;
 		
+		private String productName;
+		
 		// NoArgs Constructor
 		public CartProductDto() {
 		}
@@ -71,5 +73,15 @@ public class CartProductDto {
 
 		public void setCartId(long cartId) {
 			this.cartId = cartId;
+		}
+
+
+		public String getProductName() {
+			return productName;
+		}
+
+
+		public void setProductName(String productName) {
+			this.productName = productName;
 		}
 }

@@ -35,4 +35,6 @@ public interface CommerceService {
 	
 	// checkout
 	boolean checkout(long cartId);
+	
+	String getProductName(long productId);
 }

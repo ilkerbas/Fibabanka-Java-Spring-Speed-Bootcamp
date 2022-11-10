@@ -73,7 +73,11 @@ public class CommerceServiceImpl implements CommerceService {
 	@Override
 	public CartProductDto addProduct(CartProductDto cartProductDto) {
 		
-		return shoppingClient.addProduct(cartProductDto);
+		CartProductDto productDto = shoppingClient.addProduct(cartProductDto);
+		
+		productDto.setProductName(getProductName(productDto.getProductId()));
+		
+		return productDto;
 	}
 
 	// find cart by given id
@@ -90,6 +94,13 @@ public class CommerceServiceImpl implements CommerceService {
 	public boolean checkout(long cartId) {
 		
 		return shoppingClient.checkout(cartId);
+	}
+
+	@Override
+	public String getProductName(long productId) {
+
+		String productName = inventoryClient.findProduct(productId).getProductName();
+		return productName;
 	}
 
 }
