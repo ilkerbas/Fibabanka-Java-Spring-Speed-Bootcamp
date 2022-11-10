@@ -21,14 +21,9 @@ public class CartDto {
 			
 		}
 
-		// AllArgs Constructor
-		public CartDto(long cartId, String customerName, long totalAmount, boolean cartStatus,
-				List<CartProductDto> cartProductDtos) {
+
+		public CartDto(long cartId) {
 			this.cartId = cartId;
-			this.customerName = customerName;
-			this.totalAmount = totalAmount;
-			this.cartStatus = cartStatus;
-			this.cartProductDtos = cartProductDtos;
 		}
 		
 		// getters & setters

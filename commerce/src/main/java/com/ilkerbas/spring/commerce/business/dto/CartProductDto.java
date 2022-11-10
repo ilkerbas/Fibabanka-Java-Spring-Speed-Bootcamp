@@ -19,15 +19,9 @@ public class CartProductDto {
 		public CartProductDto() {
 		}
 
-		// FullArgs Constructor
-		public CartProductDto(long cartProductId, long productId, int salesQuantity, long salesPrice, int lineAmount,
-				long cartId) {
+		
+		public CartProductDto(long cartProductId) {
 			this.cartProductId = cartProductId;
-			this.productId = productId;
-			this.salesQuantity = salesQuantity;
-			this.salesPrice = salesPrice;
-			this.lineAmount = lineAmount;
-			this.cartId = cartId;
 		}
 
 		// getters & setters
