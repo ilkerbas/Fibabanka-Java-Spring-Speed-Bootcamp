@@ -1,7 +1,9 @@
 package com.ilkerbas.spring.commerce.presentation.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,12 +18,17 @@ import com.ilkerbas.spring.commerce.business.dto.CategoryDto;
 import com.ilkerbas.spring.commerce.business.dto.ProductDto;
 import com.ilkerbas.spring.commerce.business.service.CommerceService;
 
+
+// REST Resource
+// EndPoints for commerce
+// Uses CommerceService
 @RestController
-@RequestMapping("/commorce")
+@RequestMapping("/commerce")
 public class CommerceResource {
 
 	private CommerceService commerceService;
 
+	@Autowired
 	public CommerceResource(CommerceService commerceService) {
 		this.commerceService = commerceService;
 	}
@@ -54,7 +61,7 @@ public class CommerceResource {
 	}
 
 	// delete cart product from cart
-	@DeleteMapping("/commerce/shopping/cart/{cartId}/remove/{productId}")
+	@DeleteMapping("/shopping/cart/{cartId}/remove/{productId}")
 	public String delete(@PathVariable("cartId") long cartId, @PathVariable("productId") long productId) {
 
 		commerceService.deleteCartProduct(cartId, productId);
@@ -63,9 +70,11 @@ public class CommerceResource {
 	}
 
 	// create a cart
-	@GetMapping("/commerce/shopping/cart/create")
+	@PostMapping("/shopping/cart/create")
 	public long create(@RequestBody CartDto cartDto) {
 
+		//CartDto cartDto = new CartDto(0, "can", 213, false, new ArrayList<CartProductDto>());
+		
 		commerceService.create(cartDto);
 
 		System.out.println("Cart id: " + cartDto.getCartId() + "Customer name: " + cartDto.getCustomerName());
@@ -73,8 +82,8 @@ public class CommerceResource {
 	}
 
 	// add cart product to cart
-	@PostMapping("/commerce/shopping/cart/add")
-	public CartProductDto add(CartProductDto cartProductDto) {
+	@PostMapping("/shopping/cart/add")
+	public CartProductDto add(@RequestBody CartProductDto cartProductDto) {
 
 		CartProductDto productDto = commerceService.addProduct(cartProductDto);
 
@@ -83,7 +92,7 @@ public class CommerceResource {
 	}
 
 	// find cart by given id
-	@GetMapping("commerce/shopping/cart/find/{cartId}")
+	@GetMapping("/shopping/cart/find/{cartId}")
 	public CartDto find(@PathVariable("cartId") long cartId) {
 
 		CartDto cartDto = commerceService.find(cartId);
@@ -92,7 +101,7 @@ public class CommerceResource {
 	}
 
 	// checkout
-	@GetMapping("commerce/shopping/checkout/{cartId}")
+	@GetMapping("/shopping/checkout/{cartId}")
 	public Boolean checkout(@PathVariable("cartId") long cartId) {
 
 		boolean result = commerceService.checkout(cartId);
